@@ -4,7 +4,6 @@ header {
     top: 0;
     z-index: 50;
     justify-content: space-between;
-    border-bottom: 1px solid lightgray;
     background: linear-gradient(90deg, rgba(0,191,214,1) 0%, rgba(0,171,112,1) 100%);
     color: white;
     height: 5em;

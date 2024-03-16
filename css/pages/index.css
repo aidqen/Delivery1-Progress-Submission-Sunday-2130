@@ -84,6 +84,11 @@ section.photos {
 .meme-img {
     border-radius: 10px;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.meme-img:hover {
+    opacity: 0.5;
 }
 
 section.photos :nth-child(odd) {

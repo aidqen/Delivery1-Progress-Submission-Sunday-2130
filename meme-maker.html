@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator - Edit</title>
+    <link rel="stylesheet" href="css/components/main-header.css">
+    <link rel="stylesheet" href="css/pages/meme-maker.css">
+    <link rel="stylesheet" href="css/helpers/helpers.css">
+</head>
+<body onload="onInitEditor()">
+    <header class="flex flex-row align-items-center">
+        <h2>Superdupermeme Generator!</h2>
+        <div onclick="toggleMenu()" class="nav-btn flex flex-center">&#x2630</div>
+        <nav class="sidenav">
+          <ul class="list-style-none flex flex-column align-items-center">
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Random</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main class="flex flex-column justify-content-center">
+        <canvas height="350px" width="350px"></canvas>
+      </main>
+      
+      <script src="js/controllers/meme-edit.controller.js"></script>
+      <script src="js/controllers/meme.controller.js"></script>
+</body>
+</html>
