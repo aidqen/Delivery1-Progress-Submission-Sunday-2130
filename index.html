@@ -10,5 +10,21 @@
 </head>
 <body class="menu-open">
     <header class="flex flex-row align-items-center">
+        <h2>Supermeme Generator!</h2>
+        <button class="closebtn" onclick="toggleMenu()">☰</button>
+        <nav class="sidenav">
+            <ul class="list-style-none flex flex-column">
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Random</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('body').classList.toggle('menu-open')
+        }
+    </script>
 </body>
 </html>
