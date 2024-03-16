@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Meme Generator</title>
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/pages/index.css">
     <link rel="stylesheet" href="css/components/main-header.css" />
     <link rel="stylesheet" href="css/helpers/helpers.css" />
   </head>
-  <body>
+  <body onload="onInit()">
     <header class="flex flex-row align-items-center">
       <h2>Supermeme Generator!</h2>
-      <!-- <button class="closebtn" onclick="toggleMenu()">☰</button> -->
       <div onclick="toggleMenu()" class="nav-btn flex flex-center">&#x2630</div>
       <nav class="sidenav">
         <ul class="list-style-none flex flex-column align-items-center">
@@ -48,6 +48,9 @@
       <section class="photos"></section>
     </main>
 
+    <script src="js/controllers/user.controller.js"></script>
+    <script src="js/services/user.service.js"></script>
+    <script src="js/services/storage.service.js"></script>
     <script>
       function toggleMenu() {
         document.querySelector('body').classList.toggle('menu-open')

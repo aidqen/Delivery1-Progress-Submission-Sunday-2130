@@ -1,4 +1,6 @@
 header {
+    /* position: fixed; */
+    /* width: 100vw; */
     justify-content: space-between;
     border-bottom: 1px solid lightgray;
     background: linear-gradient(90deg, rgba(0,191,214,1) 0%, rgba(0,171,112,1) 100%);
@@ -63,22 +65,21 @@ li a:active:after {
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 1;
+    z-index: 50;
 
     height: 100%;
     width: 7em;
     padding-top: 3.75em;
     background: rgb(0,172,116);
-    box-shadow: -3px 0px 20px 0px black;
     overflow-x: hidden;
-    transition: transform 0.6s;
+    transition: transform 0.6s, box-shadow 0.6s;
     transform: translateX(100%);
 }
 
 body.menu-open .sidenav {
     /* display: block; */
     transform: translateX(0);
-    transition: transform 0.6s;
+    box-shadow: -3px 0px 20px 0px black;
 }
 
 /* The navigation menu links */
