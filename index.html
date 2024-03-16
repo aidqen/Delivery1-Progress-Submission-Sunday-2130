@@ -1,30 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Meme Generator</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/components/main-header.css">
-    <link rel="stylesheet" href="css/helpers/helpers.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/components/main-header.css" />
+    <link rel="stylesheet" href="css/helpers/helpers.css" />
+  </head>
+  <body>
     <header class="flex flex-row align-items-center">
-        <h2>Supermeme Generator!</h2>
-        <button class="closebtn" onclick="toggleMenu()">☰</button>
-        <nav class="sidenav">
-            <ul class="list-style-none flex flex-column align-items-center">
-                <li><a href="#">Gallery</a></li>
-                <li><a href="#">Random</a></li>
-                <li><a href="#">About</a></li>
-            </ul>
-        </nav>
+      <h2>Supermeme Generator!</h2>
+      <!-- <button class="closebtn" onclick="toggleMenu()">☰</button> -->
+      <div onclick="toggleMenu()" class="nav-btn flex flex-center">&#x2630</div>
+      <nav class="sidenav">
+        <ul class="list-style-none flex flex-column align-items-center">
+          <li><a href="#">Gallery</a></li>
+          <li><a href="#">Random</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
     </header>
 
+    <main>
+      <div class="search-section">
+
+        <div class="flex flex-row search-bar">
+            <input type="text" placeholder="Search" class="search-input" />
+            <button>&#128270;</button>
+        </div>
+
+        <div class="flex flex-row">
+          <section class="common-search flex flex-row">
+            <div class="search-funny">Funny</div>
+            <div class="search-animal">Animal</div>
+            <div class="search-men">Men</div>
+            <div class="search-women">Women</div>
+            <div class="search-comic">comic</div>
+            <div class="search-smile">smile</div>
+          </section>
+
+          <button class="more-btn">More</button>
+        </div>
+
+      </div>
+
+      <section class="photos"></section>
+    </main>
+
     <script>
-        function toggleMenu() {
-            document.querySelector('body').classList.toggle('menu-open')
-        }
+      function toggleMenu() {
+        document.querySelector('body').classList.toggle('menu-open')
+      }
     </script>
-</body>
+  </body>
 </html>
