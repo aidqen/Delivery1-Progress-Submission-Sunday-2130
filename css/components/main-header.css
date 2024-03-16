@@ -1,22 +1,23 @@
 header {
     justify-content: space-between;
     border-bottom: 1px solid lightgray;
-    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+    background-image: linear-gradient(90deg, rgba(3, 0, 46, 1) 0%, rgba(60, 1, 132, 1) 48%, rgba(0, 209, 214, 1) 100%);
     color: white;
+    height: 5em;
+    margin-block-end: 5.10em;
 }
 
 
 header h2 {
-    margin-inline-start: 2em;
+    margin-inline-start: 1em;
+    width: 10em;
 }
 
 ul {
-    position: fixed;
-    height: 100vh;
-    right: 0;
-    top: 0;
-    background-color: rgb(19,29,48);
+    height: 100%;
+    width: 100%;
     margin: 0;
+    padding-inline: 1em;
 }
 
 ul a {
@@ -25,7 +26,8 @@ ul a {
 }
 
 li a {
-    position: relative; 
+    position: relative;
+    margin-block: 5px;
 }
 
 li a:before,
@@ -49,51 +51,61 @@ li a:after {
 }
 
 li a:hover:before,
-li a:hover:after {
+li a:hover:after,
+li a:active:before,
+li a:active:after {
     width: 100%;
 }
 
 /* The side navigation menu */
 .sidenav {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
-    left: 0;
-    background-color: #111; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-  }
-  
-  /* The navigation menu links */
-  .sidenav a {
-    padding: 8px 8px 8px 32px;
+    /* display: none; */
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1;
+
+    height: 100%;
+    width: 7em;
+    padding-top: 3.75em;
+    background: rgb(26, 23, 63);
+    box-shadow: -3px 0px 20px 0px black;
+    overflow-x: hidden;
+    transition: transform 0.6s;
+    transform: translateX(100%);
+}
+
+body.menu-open .sidenav {
+    /* display: block; */
+    transform: translateX(0);
+    transition: transform 0.6s;
+}
+
+/* The navigation menu links */
+.sidenav a {
+    /* padding: 0.5em 0.5em 0.5em 2em; */
     text-decoration: none;
-    font-size: 25px;
-    color: #818181;
+    font-size: 1.56em;
+    color: #bebebe;
     display: block;
     transition: 0.4s;
-  }
-  
-  /* When you mouse over the navigation links, change their color */
-  .sidenav a:hover {
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
     color: #f1f1f1;
-  }
-  
-  /* Position and style the close button (top right corner) */
-  .sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-  }
-  
-  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-  #main {
-    transition: margin-left .5s;
-    padding: 20px;
-  }
-  
+}
+
+button {
+    width: 40px;
+    color: white;
+    border: 1px solid black;
+    background: rgb(26, 23, 63);
+    border-radius: 1em;
+    margin-right: 1.25em;
+    transition: 0.6s;
+}
+
+body.menu-open button {
+    margin-right: 10.25em;
+}
