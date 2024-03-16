@@ -3,7 +3,7 @@
 const gMemes = []
 
 function getMemes() {
-    for (var i = 0 ; i < 18 ; i++) {
+    for (var i = 1 ; i < 18 ; i++) {
         getMeme(i)
     }
     renderPictures(gMemes)
