@@ -56,23 +56,4 @@ function addKeywords() {
   gMemes[17].keywords.push('men', 'funny')
 }
 
-function setSelectedImg(id) {
-  gMeme.selectedImgId = id
-  saveToStorage('selectedMemeDB', gMeme)
-}
 
-function getLineText() {
-    return gMeme
-}
-
-function changeText(txtInput) {
-    gMeme.lines[0].txt = txtInput
-    saveToStorage('selectedMemeDB',gMeme)
-    renderMeme()
-}
-
-function changeColor(colorInput) {
-    gMeme.lines[0].color = colorInput
-    saveToStorage('selectedMemeDB', gMeme)
-    renderMeme()
-}
