@@ -14,18 +14,46 @@
         <div onclick="toggleMenu()" class="nav-btn flex flex-center">&#x2630</div>
         <nav class="sidenav">
           <ul class="list-style-none flex flex-column align-items-center">
-            <li><a href="#">Gallery</a></li>
+            <li><a href="index.html">Gallery</a></li>
             <li><a href="#">Random</a></li>
             <li><a href="#">About</a></li>
           </ul>
         </nav>
       </header>
 
-      <main class="flex flex-column justify-content-center">
-        <canvas height="350px" width="350px"></canvas>
+      <main class="flex flex-column align-items-center">
+        <div class="canvas-container">
+            <canvas height="334px" width="334px"></canvas>
+        </div>
+        <div class="text-edit-container flex flex-column align-items-center">
+
+        <input type="text" placeholder="Text...">
+        <div class="flex flex-row">
+            <button class="reorder-btn">&#x21c5;</button>
+            <button class="add-btn">+</button>
+            <button class="remove-btn">&#127755;</button>
+        </div>
+
+            <div class="flex flex-row">
+                <button>A +</button>
+                <button>A -</button>
+                <button>&#8592;</button>
+                <button>&#8594;</button>
+                <button>&#xb6;</button>
+            </div>
+
+            <div class="flex flex-row ">
+                <select name="font" id="font">
+                    <option value="Impact">Impact</option>
+                </select> 
+                <button>s</button>
+                <button>s</button>
+            </div>
+        </div>
       </main>
       
       <script src="js/controllers/meme-edit.controller.js"></script>
       <script src="js/controllers/meme.controller.js"></script>
+      <script src="js/services/meme.service.js"></script>
 </body>
 </html>
