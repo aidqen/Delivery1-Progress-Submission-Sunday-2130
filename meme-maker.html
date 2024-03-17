@@ -39,26 +39,29 @@
         </div>
 
         <div class="flex flex-row">
-          <button>A +</button>
-          <button>A -</button>
+          <button onclick="onChangeFontsize('increase')">A +</button>
+          <button onclick="onChangeFontsize('decrease')">A -</button>
           <button>&#8592;</button>
           <button>&#8594;</button>
           <button>&#xb6;</button>
         </div>
 
         <div class="flex flex-row">
-          <select name="font" id="font">
+          <select oninput="onFontChange(this.value)" name="font" id="font">
             <option value="Impact">Impact</option>
+            <option value="sans-serif">sans-serif</option>
           </select>
           <button>s</button>
           <button>s</button>
         </div>
+        <div class="download-btn flex flex-center"><a href="#"  onclick="downloadImg(this)" download="my-img.png">Download jpeg</a></div>
       </div>
     </main>
 
     <script src="js/controllers/meme-edit.controller.js"></script>
     <script src="js/controllers/meme.controller.js"></script>
     <script src="js/services/meme.service.js"></script>
+    <script src="js/services/user-preferences.service.js"></script>
     <script src="js/services/storage.service.js"></script>
   </body>
 </html>

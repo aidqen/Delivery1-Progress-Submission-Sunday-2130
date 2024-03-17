@@ -42,20 +42,21 @@ function renderImage() {
 
 function renderText() {
   var txtSettings = getLineText()
-  var {txt, size, color} = txtSettings.lines[0]
-  var x = 45
-  var y = 45
+  var {txt, size, color, font} = txtSettings.lines[0]
+  var x = 200
+  var y = 200
 
-  gCtx.strokeStyle = color
-  gCtx.lineWidth = 0.5
+  gCtx.fillStyle = color
+  gCtx.strokeStyle = 'black'
+  gCtx.lineWidth = 1
   
-  gCtx.font = `${size}px David`
+  gCtx.font = `bold ${size}px ${font}`
   gCtx.fontSmoothingEnabled = true;
   gCtx.textAlign = 'center'
   gCtx.textBaseline = 'middle'
   
-  gCtx.fillText(txt, x, y)
-  gCtx.strokeText(txt, x, y, 100)
+  gCtx.fillText(txt, gElCanvas.width / 2, y)
+  gCtx.strokeText(txt, gElCanvas.width / 2, y)
 }
 
 function onChangeText(elTxtInput) {
@@ -64,4 +65,17 @@ function onChangeText(elTxtInput) {
 
 function onChangeColor(elColorInput) {
   changeColor(elColorInput.value)
+}
+
+function onChangeFontsize(type) {
+  changeFontsize(type)
+}
+
+function onFontChange(font) {
+  fontChange(font)
+}
+
+function downloadImg(elLink) {
+  const imgContent = gElCanvas.toDataURL('image/png') // image/jpeg the default format
+  elLink.href = imgContent
 }

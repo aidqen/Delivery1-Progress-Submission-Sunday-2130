@@ -57,6 +57,32 @@ button {
     border-radius: 1em;
 }
 
+.text-edit-container .download-btn {
+    width: 100%;
+    height: 3em;
+    font-weight: 700;
+
+    background-color: rgb(34,37,44);
+
+    cursor: pointer;
+    border: 0;
+    border-radius: 1em;
+}
+
+.download-btn a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.download-btn a:hover {
+    color: lightslategray;
+}
+
+.download-btn a:active {
+    color: blue;
+}
+
 
 select {
     width: 60%;

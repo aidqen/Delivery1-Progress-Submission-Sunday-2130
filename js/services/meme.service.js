@@ -7,8 +7,9 @@ var gMeme = {
   lines: [
     {
       txt: 'some random text',
-      size: '20',
+      size: 20,
       color: 'white',
+      font: 'sans-serif'
     },
   ],
 }
@@ -57,3 +58,7 @@ function addKeywords() {
 }
 
 
+function setSelectedImg(id) {
+    gMeme.selectedImgId = id
+    saveToStorage('selectedMemeDB', gMeme)
+  }
