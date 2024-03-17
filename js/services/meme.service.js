@@ -17,7 +17,7 @@ function createMemes() {
     for (var i = 1 ; i < 18 ; i++) {
         gMemes.push(getMeme(i))
     }
-    console.log(gMemes);
+    saveToStorage('memesDB',gMemes)
 }
 
 function getMemes() {
@@ -58,16 +58,15 @@ function addKeywords() {
 
 function setSelectedImg(id) {
     gMeme.selectedImgId = id
-    console.log(gMeme);
+    saveToStorage('selectedMemeDB', gMeme)
 }
 
 function renderImageToEditor() {
-    console.log(gMeme);
+    gMeme = loadFromStorage('selectedMemeDB')
     const {selectedImgId, selectedLineIdx} = gMeme
 
     const img = new Image()
     img.src = `meme-img/${selectedImgId}.jpg`
-    console.log('hi')
     img.onload = () => {
       const scaleFactor = Math.min(
         gElCanvas.width / img.width,

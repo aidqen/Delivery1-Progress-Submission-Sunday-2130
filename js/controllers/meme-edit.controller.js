@@ -4,12 +4,10 @@ var gElCanvas
 var gCtx
 
 function onInitEditor() {
-    renderImageToEditor()
+  renderImageToEditor()
   gElCanvas = document.querySelector('canvas')
   gCtx = gElCanvas.getContext('2d')
 }
-
-
 
 function resizeCanvas() {
   const elContainer = document.querySelector('.canvas-container')

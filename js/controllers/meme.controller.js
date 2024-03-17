@@ -1,7 +1,7 @@
 'use strict'
 
 function onInit() {
-    createMemes()
+  createMemes()
   renderImages()
   //Service calls renderPictures
 }
@@ -10,18 +10,21 @@ function toggleMenu() {
   document.querySelector('body').classList.toggle('menu-open')
 }
 
-function renderImages(gMemes) {
+function renderImages() {
   const elContainer = document.querySelector('section.photos')
 
   var memes = getMemes()
+  console.log(memes[0].id)
   var strHTML = ''
   memes.map(meme => {
-    strHTML += `<img src="meme-img/${meme.id}.jpg" class="meme-img" onclick="selectImg()"></img>`
+    console.log(meme.id)
+    strHTML += `<img src="meme-img/${meme.id}.jpg" class="meme-img" onclick="selectImg(${meme.id})"></img>`
   })
   elContainer.innerHTML = strHTML
 }
 
 function selectImg(id) {
+  console.log(id)
   setSelectedImg(id)
-  window.location.href = 'meme-maker.html'  
+  window.location.href = 'meme-maker.html'
 }
