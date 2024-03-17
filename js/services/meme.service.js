@@ -61,30 +61,18 @@ function setSelectedImg(id) {
   saveToStorage('selectedMemeDB', gMeme)
 }
 
-function renderImageToEditor() {
-  gMeme = loadFromStorage('selectedMemeDB')
-  const { selectedImgId, selectedLineIdx } = gMeme
-
-  const img = new Image()
-  img.src = `meme-img/${selectedImgId}.jpg`
-  img.onload = () => {
-    const scaleFactor = Math.min(
-      gElCanvas.width / img.width,
-      gElCanvas.height / img.height
-    )
-    const scaledWidth = img.width * scaleFactor
-    const scaledHeight = img.height * scaleFactor
-    gCtx.drawImage(img, 0, 0, scaledWidth, scaledHeight)
-    renderMeme()
-  }
-}
-
 function getLineText() {
     return gMeme
 }
 
-function setLineText(txtInput) {
+function changeText(txtInput) {
     gMeme.lines[0].txt = txtInput
     saveToStorage('selectedMemeDB',gMeme)
+    renderMeme()
+}
+
+function changeColor(colorInput) {
+    gMeme.lines[0].color = colorInput
+    saveToStorage('selectedMemeDB', gMeme)
     renderMeme()
 }

@@ -1,60 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Meme Generator - Edit</title>
-    <link rel="stylesheet" href="css/components/main-header.css">
-    <link rel="stylesheet" href="css/pages/meme-maker.css">
-    <link rel="stylesheet" href="css/helpers/helpers.css">
-</head>
-<body onload="onInitEditor()">
+    <link rel="stylesheet" href="css/components/main-header.css" />
+    <link rel="stylesheet" href="css/pages/meme-maker.css" />
+    <link rel="stylesheet" href="css/helpers/helpers.css" />
+  </head>
+  <body onload="onInitEditor()">
     <header class="flex flex-row align-items-center">
-        <h2>Superdupermeme Generator!</h2>
-        <div onclick="toggleMenu()" class="nav-btn flex flex-center">&#x2630</div>
-        <nav class="sidenav">
-          <ul class="list-style-none flex flex-column align-items-center">
-            <li><a href="index.html">Gallery</a></li>
-            <li><a href="#">Random</a></li>
-            <li><a href="#">About</a></li>
-          </ul>
-        </nav>
-      </header>
+      <h2>Superdupermeme Generator!</h2>
+      <div onclick="toggleMenu()" class="nav-btn flex flex-center">
+        &#x2630;
+      </div>
+      <nav class="sidenav">
+        <ul class="list-style-none flex flex-column align-items-center">
+          <li><a href="index.html">Gallery</a></li>
+          <li><a href="#">Random</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
+    </header>
 
-      <main class="flex flex-column align-items-center">
-        <div class="canvas-container">
-            <canvas height="334px" width="334px"></canvas>
-        </div>
-        <div class="text-edit-container flex flex-column align-items-center">
-
-        <input type="text" placeholder="Text...">
+    <main class="flex flex-column align-items-center">
+      <div class="canvas-container">
+        <canvas height="334px" width="334px"></canvas>
+      </div>
+      <div class="text-edit-container flex flex-column align-items-center">
         <div class="flex flex-row">
-            <button class="reorder-btn">&#x21c5;</button>
-            <button class="add-btn">+</button>
-            <button class="remove-btn">&#127755;</button>
+          <input type="text" class="text-input" placeholder="Text..." onkeyup="onChangeText(this)" />
+          <input type="color" class="color-input" oninput="onChangeColor(this)" />
+        </div>
+        <div class="flex flex-row">
+          <button class="reorder-btn">&#x21c5;</button>
+          <button class="add-btn">+</button>
+          <button class="remove-btn">&#128465;</button>
         </div>
 
-            <div class="flex flex-row">
-                <button>A +</button>
-                <button>A -</button>
-                <button>&#8592;</button>
-                <button>&#8594;</button>
-                <button>&#xb6;</button>
-            </div>
-
-            <div class="flex flex-row ">
-                <select name="font" id="font">
-                    <option value="Impact">Impact</option>
-                </select> 
-                <button>s</button>
-                <button>s</button>
-            </div>
+        <div class="flex flex-row">
+          <button>A +</button>
+          <button>A -</button>
+          <button>&#8592;</button>
+          <button>&#8594;</button>
+          <button>&#xb6;</button>
         </div>
-      </main>
-      
-      <script src="js/controllers/meme-edit.controller.js"></script>
-      <script src="js/controllers/meme.controller.js"></script>
-      <script src="js/services/meme.service.js"></script>
-      <script src="js/services/storage.service.js"></script>
-</body>
+
+        <div class="flex flex-row">
+          <select name="font" id="font">
+            <option value="Impact">Impact</option>
+          </select>
+          <button>s</button>
+          <button>s</button>
+        </div>
+      </div>
+    </main>
+
+    <script src="js/controllers/meme-edit.controller.js"></script>
+    <script src="js/controllers/meme.controller.js"></script>
+    <script src="js/services/meme.service.js"></script>
+    <script src="js/services/storage.service.js"></script>
+  </body>
 </html>
