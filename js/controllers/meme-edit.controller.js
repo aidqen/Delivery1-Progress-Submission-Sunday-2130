@@ -1,12 +1,19 @@
 'use strict'
 
-const gElCanvas = document.querySelector('canvas')
+var gElCanvas
+var gCtx
 
 function onInitEditor() {
-    renderImage('1')
+    renderImageToEditor()
+  gElCanvas = document.querySelector('canvas')
+  gCtx = gElCanvas.getContext('2d')
 }
 
-function renderImage(imgName) {
-    const elCanvas = document.querySelector('canvas')
-    
+
+
+function resizeCanvas() {
+  const elContainer = document.querySelector('.canvas-container')
+
+  // Changing the canvas dimension clears the canvas
+  gElCanvas.width = elContainer.clientWidth
 }

@@ -1,22 +1,38 @@
 'use strict'
-
+var gId = 1
 const gMemes = []
-
-function getMemes() {
-    for (var i = 1 ; i < 18 ; i++) {
-        getMeme(i)
-    }
-    renderImages(gMemes)
+var gMeme = {
+    selectedImgId: 0,
+    selectedLineIdx: 0,
+    lines: [
+        {
+            txt: 'I sometimes eat falafel',
+            size: 20,
+            color: 'red',
+        }
+    ]
 }
 
-function getMeme(img) {
+function createMemes() {
+    for (var i = 1 ; i < 18 ; i++) {
+        gMemes.push(getMeme(i))
+    }
+    console.log(gMemes);
+}
+
+function getMemes() {
+    var memes = gMemes
+    console.log(memes);
+    return memes
+}
+
+function getMeme(id) {
     const meme = {
-        name: img,
         txt: '',
-        id: getRandomId(6),
+        id,
         keywords: []
     }
-    gMemes.push(meme)
+    return meme
 }
 
 function addKeywords() {
@@ -39,3 +55,26 @@ function addKeywords() {
     gMemes[16].keywords.push('men', 'funny')
     gMemes[17].keywords.push('men', 'funny')
 }
+
+function setSelectedImg(id) {
+    gMeme.selectedImgId = id
+    console.log(gMeme);
+}
+
+function renderImageToEditor() {
+    console.log(gMeme);
+    const {selectedImgId, selectedLineIdx} = gMeme
+
+    const img = new Image()
+    img.src = `meme-img/${selectedImgId}.jpg`
+    console.log('hi')
+    img.onload = () => {
+      const scaleFactor = Math.min(
+        gElCanvas.width / img.width,
+        gElCanvas.height / img.height
+      )
+      const scaledWidth = img.width * scaleFactor
+      const scaledHeight = img.height * scaleFactor
+      gCtx.drawImage(img, 0, 0, scaledWidth, scaledHeight)
+    }
+  }
