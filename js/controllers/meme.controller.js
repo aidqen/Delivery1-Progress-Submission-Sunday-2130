@@ -14,7 +14,6 @@ function renderImages() {
   const elContainer = document.querySelector('section.photos')
 
   var memes = getMemes()
-  console.log(memes[0].id)
   var strHTML = ''
   memes.map(meme => {
     console.log(meme.id)

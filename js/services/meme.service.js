@@ -6,28 +6,52 @@ var gMeme = {
   selectedLineIdx: 0,
   lines: [
     {
+      x: 20,
+      y: 200,
       txt: 'some random text',
-      size: 20,
+      size: 24,
       color: 'white',
       font: 'sans-serif',
       fontStyle: ['normal'],
+      isDrag: false
     },
   ],
 }
 
 function addTextLine() {
   gMeme.lines.push(newTextLine())
+  if (!gMeme.lines.length === 0) {
+    gMeme.selectedLineIdx++
+  }
   saveToStorage('selectedMemeDB', gMeme)
   renderMeme()
 }
 
 function newTextLine(txt = 'Some random text') {
+  gMeme.selectedLineIdx++
   return {
+    x: 20,
+    y: 200,
     txt,
-    size: 20,
+    size: 24,
     color: 'white',
     font: 'Impact',
     fontStyle: ['normal'],
+    isDrag: false,
+  }
+}
+
+function isWithinLineRange(mouseX, mouseY, ctx) { 
+  const idx = gMeme.selectedLineIdx
+  if (
+    mouseX >= gMeme.lines[idx].x &&
+    mouseX <= gMeme.lines[idx].x + ctx.measureText(gMeme.lines[idx].txt).width &&
+    mouseY >= gMeme.lines[idx].y - gMeme.lines[idx].size &&
+    mouseY <= gMeme.lines[idx].y
+  ) {
+    gMeme.lines[idx].isDrag = true
+    console.log(gMeme.lines[idx].isDrag);
+    return true
   }
 }
 
@@ -35,7 +59,7 @@ function removeTextLine() {
   var idx = gMeme.selectedLineIdx
   gMeme.lines.splice(idx, 1)
   if (idx !== 0) {
-    idx--
+    gMeme.selectedLineIdx--
   }
   saveToStorage('selectedMemeDB', gMeme)
   renderMeme()
@@ -48,28 +72,30 @@ function pickAnotherLine() {
   }
   console.log(gMeme)
   saveToStorage('selectedMemeDB', gMeme)
+  renderMeme()
 }
 
 function createMemes() {
   for (var i = 1; i < 18; i++) {
-    gMemes.push(getMeme(i))
+    gMemes.push(createMeme(i))
   }
   saveToStorage('memesDB', gMemes)
 }
 
 function getMemes() {
-  var memes = gMemes
-  console.log(memes)
-  return memes
+  return gMemes
 }
 
-function getMeme(id) {
-  const meme = {
+function createMeme(id) {
+  return {
     txt: '',
     id,
     keywords: [],
   }
-  return meme
+}
+
+function getCurrMeme() {
+  return gMeme
 }
 
 function addKeywords() {
@@ -96,4 +122,8 @@ function addKeywords() {
 function setSelectedImg(id) {
   gMeme.selectedImgId = id
   saveToStorage('selectedMemeDB', gMeme)
+}
+
+function setCircleDrag(isDrag) {
+  gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
 }
