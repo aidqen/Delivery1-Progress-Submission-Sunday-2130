@@ -2,6 +2,7 @@
 
 var gElCanvas
 var gCtx
+var gIsActive = false
 
 function onInitEditor() {
   gElCanvas = document.querySelector('canvas')
@@ -42,7 +43,7 @@ function renderImage() {
 
 function renderText() {
   var txtSettings = getLineText()
-  var {txt, size, color, font} = txtSettings.lines[0]
+  var {txt, size, color, font, fontStyle} = txtSettings.lines[0]
   var x = 200
   var y = 200
 
@@ -50,10 +51,10 @@ function renderText() {
   gCtx.strokeStyle = 'black'
   gCtx.lineWidth = 1
   
-  gCtx.font = `bold ${size}px ${font}`
+  gCtx.font = `${fontStyle.join(' ')} ${size}px ${font}`
   gCtx.fontSmoothingEnabled = true;
   gCtx.textAlign = 'center'
-  gCtx.textBaseline = 'middle'
+  gCtx.textBaseline = 'centers'
   
   gCtx.fillText(txt, gElCanvas.width / 2, y)
   gCtx.strokeText(txt, gElCanvas.width / 2, y)
@@ -73,6 +74,16 @@ function onChangeFontsize(type) {
 
 function onFontChange(font) {
   fontChange(font)
+}
+
+function onFontStyleChange(elBtn) {
+  gIsActive = !gIsActive
+  elBtn.classList.toggle('active')
+  if (elBtn.classList.contains('active')) {
+    fontStyleAdd(elBtn.value)
+  } else {
+    fontStyleRemove(elBtn.value)
+  }
 }
 
 function downloadImg(elLink) {

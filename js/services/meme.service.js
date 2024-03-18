@@ -9,7 +9,8 @@ var gMeme = {
       txt: 'some random text',
       size: 20,
       color: 'white',
-      font: 'sans-serif'
+      font: 'sans-serif',
+      fontStyle: ['normal']
     },
   ],
 }
