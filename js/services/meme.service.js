@@ -10,9 +10,44 @@ var gMeme = {
       size: 20,
       color: 'white',
       font: 'sans-serif',
-      fontStyle: ['normal']
+      fontStyle: ['normal'],
     },
   ],
+}
+
+function addTextLine() {
+  gMeme.lines.push(newTextLine())
+  saveToStorage('selectedMemeDB', gMeme)
+  renderMeme()
+}
+
+function newTextLine(txt = 'Some random text') {
+  return {
+    txt,
+    size: 20,
+    color: 'white',
+    font: 'Impact',
+    fontStyle: ['normal'],
+  }
+}
+
+function removeTextLine() {
+  var idx = gMeme.selectedLineIdx
+  gMeme.lines.splice(idx, 1)
+  if (idx !== 0) {
+    idx--
+  }
+  saveToStorage('selectedMemeDB', gMeme)
+  renderMeme()
+}
+
+function pickAnotherLine() {
+  gMeme.selectedLineIdx++
+  if (gMeme.lines.length <= gMeme.selectedLineIdx) {
+    gMeme.selectedLineIdx = 0
+  }
+  console.log(gMeme)
+  saveToStorage('selectedMemeDB', gMeme)
 }
 
 function createMemes() {
@@ -58,8 +93,7 @@ function addKeywords() {
   gMemes[17].keywords.push('men', 'funny')
 }
 
-
 function setSelectedImg(id) {
-    gMeme.selectedImgId = id
-    saveToStorage('selectedMemeDB', gMeme)
-  }
+  gMeme.selectedImgId = id
+  saveToStorage('selectedMemeDB', gMeme)
+}

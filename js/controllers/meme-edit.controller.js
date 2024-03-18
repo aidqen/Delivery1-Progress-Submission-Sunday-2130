@@ -13,20 +13,18 @@ function onInitEditor() {
 function resizeCanvas() {
   const elContainer = document.querySelector('.canvas-container')
 
-  // Changing the canvas dimension clears the canvas
   gElCanvas.width = elContainer.clientWidth
 }
 
 function renderMeme() {
   gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
   gMeme = loadFromStorage('selectedMemeDB')
+  console.log(gMeme)
   renderImage()
-  // renderText()
 }
 
 function renderImage() {
   const { selectedImgId } = gMeme
-  console.log(gMeme);
   const img = new Image()
   img.src = `meme-img/${selectedImgId}.jpg`
   img.onload = () => {
@@ -42,22 +40,37 @@ function renderImage() {
 }
 
 function renderText() {
-  var txtSettings = getLineText()
-  var {txt, size, color, font, fontStyle} = txtSettings.lines[0]
-  var x = 200
-  var y = 200
+  const meme = getLineText()
+  console.log(meme)
+  meme.lines.map(line => {
+    const { txt, size, color, font, fontStyle } = line
+    var x = 200
+    var y = 200
 
-  gCtx.fillStyle = color
-  gCtx.strokeStyle = 'black'
-  gCtx.lineWidth = 1
-  
-  gCtx.font = `${fontStyle.join(' ')} ${size}px ${font}`
-  gCtx.fontSmoothingEnabled = true;
-  gCtx.textAlign = 'center'
-  gCtx.textBaseline = 'centers'
-  
-  gCtx.fillText(txt, gElCanvas.width / 2, y)
-  gCtx.strokeText(txt, gElCanvas.width / 2, y)
+    gCtx.fillStyle = color
+    gCtx.strokeStyle = 'black'
+    gCtx.lineWidth = 1
+
+    gCtx.font = `${fontStyle.join(' ')} ${size}px ${font}`
+    gCtx.fontSmoothingEnabled = true
+    gCtx.textAlign = 'center'
+    gCtx.textBaseline = 'centers'
+
+    gCtx.fillText(txt, gElCanvas.width / 2, y)
+    gCtx.strokeText(txt, gElCanvas.width / 2, y)
+  })
+}
+
+function onAddTextLine() {
+  addTextLine()
+}
+
+function onRemoveTextLine() {
+  removeTextLine()
+}
+
+function onPickAnotherLine() {
+  pickAnotherLine()
 }
 
 function onChangeText(elTxtInput) {

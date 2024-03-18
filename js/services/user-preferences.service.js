@@ -22,7 +22,6 @@ function changeFontsize(type) {
   } else if (type === 'decrease') {
     gMeme.lines[gMeme.selectedLineIdx].size -= 2
   }
-  console.log(gMeme.lines[0].size)
   saveToStorage('selectedMemeDB', gMeme)
   renderMeme()
 }

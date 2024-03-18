@@ -68,20 +68,21 @@ button {
     cursor: pointer;
     border: 0;
     border-radius: 1em;
-}
-
-.download-btn a {
-    color: white;
-    text-decoration: none;
     transition: 0.3s;
 }
 
-.download-btn a:hover {
-    color: lightslategray;
+.download-btn:hover {
+    background-color: rgb(57, 57, 57);
 }
 
-.download-btn a:active {
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.download-btn a:hover {
     color: blue;
+    text-decoration: underline;
 }
 
 
