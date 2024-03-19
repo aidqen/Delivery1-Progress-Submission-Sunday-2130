@@ -1,5 +1,58 @@
 
-@media (min-width: 920px) {
-    
+@media (max-width: 920px) {
+    .sidenav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 50;
 
+        width: 7em;
+        padding-top: 3.75em;
+        transition: transform 0.6s, box-shadow 0.6s;
+        overflow-x: hidden;
+        height: 100%;
+        background: #dc95ac;
+        transform: translateX(100%);
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    body.menu-open .sidenav {
+        transform: translateX(0);
+        box-shadow: -3px 0px 20px 0px black;
+    }
 }
+
+@media (min-width: 920px) {
+
+    header h2 {
+        width: 14em;
+    }
+
+    .nav-btn {
+        display: none
+    }
+    .sidenav {
+        position: static;
+        flex-direction: row;
+    }
+
+    header .sidenav ul {
+        flex-direction: row;
+        align-items: center;
+        font-size: 14px;
+    }
+
+    section.photos {
+        columns: 4;
+    }
+    
+    .sidenav ul > * {
+        margin-inline-end: 1.5em;
+    }
+}
+
+

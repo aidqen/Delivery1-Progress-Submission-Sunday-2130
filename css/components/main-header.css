@@ -4,7 +4,6 @@ header {
     top: 0;
     z-index: 50;
     justify-content: space-between;
-    /* background: linear-gradient(90deg, rgba(0,191,214,1) 0%, rgba(0,171,112,1) 100%); */
     background-image: var(--header-gradient);
     color: white;
     height: 5em;
@@ -60,28 +59,6 @@ li a:active:after {
     width: 100%;
 }
 
-/* The side navigation menu */
-.sidenav {
-    /* display: none; */
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 50;
-
-    height: 100%;
-    width: 7em;
-    padding-top: 3.75em;
-    background: #dc95ac;
-    overflow-x: hidden;
-    transition: transform 0.6s, box-shadow 0.6s;
-    transform: translateX(100%);
-}
-
-body.menu-open .sidenav {
-    /* display: block; */
-    transform: translateX(0);
-    box-shadow: -3px 0px 20px 0px black;
-}
 
 /* The navigation menu links */
 .sidenav a {

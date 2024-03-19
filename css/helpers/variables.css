@@ -3,4 +3,6 @@
     --dark-container: rgb(34,37,44);
     --light-gray: rgb(135,137,141);
     --header-gradient: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
+
+    --font-size-1: 10px
 }

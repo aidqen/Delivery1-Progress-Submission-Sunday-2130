@@ -1,0 +1,25 @@
+@media (max-width: 920px) {
+
+
+    
+}
+
+@media (min-width: 920px) {
+    body {
+        display: grid; 
+        grid-template-columns: 1fr 6fr 1fr;
+    }
+
+    main {
+        grid-column: 2;
+        grid-template-columns: repeat(4, 1fr) ;
+    }
+    
+    .full {
+        grid-column: span 4;
+    }
+
+    :root {
+        --font-size-1: 14px
+    }
+}

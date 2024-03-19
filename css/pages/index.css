@@ -1,12 +1,13 @@
 body {
     background-color: var(--dark-body);
+
 }
 
 main {
     display: grid;
-    height: 100vh;
-    grid-template-columns: 1fr 1fr;
+    height: 100%;
     margin: 6em 1em 1em 1em;
+    grid-template-columns: repeat(2, 1fr) ;
     background-color: var(--dark-container);
     border-radius: 15px;
     padding: 1em;
@@ -15,6 +16,10 @@ main {
 
 section.photos {
     border-radius: 5px;
+}
+
+.search-section {
+    height: max-content;
 }
 
 .search-bar {
@@ -53,7 +58,7 @@ input.search-input {
 }
 
 .common-search, .more-btn {
-    font-size: 10px;
+    font-size: var(--font-size-1);
     padding: 0.7em 0.5em;
 }
 
@@ -76,16 +81,26 @@ input.search-input {
     background-image: var(--header-gradient);
     color: white;
     border-radius: 30px;
-    /* padding: 0.7em 0.5em; */
     width: 10%;
     cursor: pointer;
+    transition: 0.2s;
+}
+
+.more-btn:hover {
+    background: #ff96ad;
+    box-shadow: 0 0 5px #ff96ad, 0 0 25px #ff96ad, 0 0 50px #ff96ad, 0 0 200px #ff96ad;
+    color: black;
 }
 
 section.photos {
-    display: grid;
+    columns: 2;
     gap: 1em;
     width: 100%;
     height: 100%;
+}
+
+section.photos > * {
+    margin-bottom: 1em;
 }
 
 .meme-img {
@@ -96,15 +111,6 @@ section.photos {
 
 .meme-img:hover {
     opacity: 0.5;
-}
-
-section.photos :nth-child(odd) {
-    cursor: pointer;
-    grid-column: 1;
-}
-
-section.photos :nth-child(even) {
-    grid-column: 2;
 }
 
 .full {
