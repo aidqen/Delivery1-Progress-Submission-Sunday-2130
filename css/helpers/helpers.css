@@ -26,3 +26,11 @@
 .list-style-none {
     list-style-type: none;
 }
+
+.height-3em {
+    height: 3em;
+}
+
+.width-100 {
+    width: 100%;
+}

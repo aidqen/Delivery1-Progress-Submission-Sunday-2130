@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="css/components/main-header.css" />
     <link rel="stylesheet" href="css/pages/meme-maker.css" />
     <link rel="stylesheet" href="css/helpers/helpers.css" />
+    <link rel="stylesheet" href="css/helpers/variables.css">
+    <link rel="stylesheet" href="css/mq/mq-header.css">
+    <link rel="stylesheet" href="css/mq/mq.meme-edit.css">
+
   </head>
   <body onload="onInitEditor()">
     <header class="flex flex-row align-items-center">
@@ -28,35 +32,40 @@
         <canvas height="334px" width="334px"></canvas>
       </div>
       <div class="text-edit-container flex flex-column align-items-center">
-        <div class="flex flex-row">
+        <div class="flex flex-row height-3em width-100 justify-content-center">
           <input type="text" class="text-input" placeholder="Text..." onkeyup="onChangeText(this)" />
           <input type="color" class="color-input" oninput="onChangeColor(this)" />
         </div>
-        <div class="flex flex-row">
+        <div class="flex flex-row height-3em width-100 justify-content-center">
           <button class="reorder-btn" onclick="onPickAnotherLine()">&#x21c5;</button>
           <button class="add-btn" onclick="onAddTextLine()">+</button>
           <button class="remove-btn" onclick="onRemoveTextLine()">&#128465;</button>
         </div>
+        
+        <div class="font-edit-container">
 
-        <div class="flex flex-row">
-          <button onclick="onChangeFontsize('increase')">A +</button>
-          <button onclick="onChangeFontsize('decrease')">A -</button>
-          <button>&#8592;</button>
-          <button>&#8594;</button>
-          <button>&#xb6;</button>
+          <div class="flex flex-row height-3em width-100 justify-content-center">
+            <button onclick="onChangeFontsize('increase')">A +</button>
+            <button onclick="onChangeFontsize('decrease')">A -</button>
+            <button>&#8592;</button>
+            <button>&#8594;</button>
+            <button>&#xb6;</button>
+          </div>
+          
+          <div class="flex flex-row height-3em width-100 justify-content-center">
+            <select oninput="onFontChange(this.value)" name="font" id="font">
+              <option value="Impact">Impact</option>
+              <option value="sans-serif">sans-serif</option>
+            </select>
+            <button onclick="onFontStyleChange(this)" value="bold">B</button>
+            <button onclick="onFontStyleChange(this)" value="italic">&#8520;</button>
+          </div>
         </div>
-
-        <div class="flex flex-row">
-          <select oninput="onFontChange(this.value)" name="font" id="font">
-            <option value="Impact">Impact</option>
-            <option value="sans-serif">sans-serif</option>
-          </select>
-          <button onclick="onFontStyleChange(this)" value="bold">B</button>
-          <button onclick="onFontStyleChange(this)" value="italic">&#8520;</button>
-        </div>
-        <div class="flex flex-row">
-          <div class="download-btn flex flex-center"><a href="#" onclick="onDownloadImg(this)" download="my-img.png">Download jpeg</a></div>
-          <button class="save-meme" onclick="saveMeme()">Save</button>
+          
+          <div class="flex flex-row height-3em width-100 justify-content-center">
+            <div class="download-btn flex flex-center"><a href="#" onclick="onDownloadImg(this)" download="my-img.png">Download jpeg</a>
+            </div>
+            <button class="save-meme-btn" onclick="saveMeme()">Save</button>
         </div>
       </div>
     </main>

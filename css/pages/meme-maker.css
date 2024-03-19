@@ -59,8 +59,7 @@ button {
 }
 
 .text-edit-container .download-btn {
-    width: 100%;
-    height: 3em;
+    height: 100%;
     font-weight: 700;
 
     background-color: rgb(34,37,44);
@@ -124,4 +123,12 @@ button:hover {
 button.active:hover {
     background-color: lightgreen;
     font-weight: 900;
+}
+
+.save-meme-btn, .download-btn {
+    height: 100%;
+    flex-grow: 1;
+}
+
+.font-edit-container {
 }

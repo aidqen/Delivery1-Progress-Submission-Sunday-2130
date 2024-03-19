@@ -1,13 +1,13 @@
 body {
-    background-color: rgb(34,37,44);
+    background-color: var(--dark-body);
 }
 
 main {
     display: grid;
     height: 100vh;
     grid-template-columns: 1fr 1fr;
-    margin: 5.5em 1em 1em 1em;
-    background-color: rgb(55,58,65);
+    margin: 6em 1em 1em 1em;
+    background-color: var(--dark-container);
     border-radius: 15px;
     padding: 1em;
 }
@@ -36,7 +36,7 @@ input.search-input {
     border-radius: 30px;
     border: 0;
     padding: 1em;
-    background-color:rgb(34,37,44);
+    background-color: var(--dark-body);
 }
 
 .common-search-container {
@@ -44,33 +44,40 @@ input.search-input {
 }
 
 .common-search {
-    display: flex;
     justify-content: space-around;
     color: white;
-    background-color: rgb(135,137,141);
+    background-color: var(--dark-container);
     border-radius: 30px;
     margin-inline-end: 1em;
-    padding-inline:0.7em;
-    padding-block: 0.5em;
     width: 100%;
 }
 
-.common-search > * {
+.common-search, .more-btn {
     font-size: 10px;
-    cursor: pointer;
+    padding: 0.7em 0.5em;
 }
 
-.common-search > *:hover {
-    color: lightgray;
+.common-search> * {
+    cursor: pointer;
+    transition: 0.1s;
+    font-weight: 900;
+}
+
+.common-search>*:hover {
+    color: rgb(220,149,172);
+    transform: scale(1.1);
+    font-size: bold;
+    
+    text-decoration: underline;
 }
 
 .more-btn {
     border: 0;
-    background: linear-gradient(90deg, rgba(0,191,214,1) 0%, rgba(0,171,112,1) 100%);
+    background-image: var(--header-gradient);
     color: white;
-    font-size: 10px;
     border-radius: 30px;
-    padding: 0.5em 1.3em;
+    /* padding: 0.7em 0.5em; */
+    width: 10%;
     cursor: pointer;
 }
 
