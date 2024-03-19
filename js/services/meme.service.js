@@ -9,7 +9,7 @@ var gMeme = {
       x: 20,
       y: 200,
       txt: 'some random text',
-      size: 24,
+      size: 30,
       color: 'white',
       font: 'sans-serif',
       fontStyle: ['normal'],
@@ -127,4 +127,9 @@ function setSelectedImg(id) {
 
 function setCircleDrag(isDrag) {
   gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
+}
+
+function pickRandomPicture() {
+  gMeme.selectedImgId = getRandomInt(0, gMemes.length)
+  saveToStorage('selectedMemeDB', gMeme)
 }

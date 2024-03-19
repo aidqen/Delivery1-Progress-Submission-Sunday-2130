@@ -25,3 +25,8 @@ function selectImg(id) {
   setSelectedImg(id)
   window.location.href = 'meme-maker.html'
 }
+
+function onRandomPicture() {
+  pickRandomPicture()
+  window.location.href = 'meme-maker.html'
+}
