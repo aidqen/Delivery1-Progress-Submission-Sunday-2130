@@ -23,7 +23,6 @@ function renderImages() {
 }
 
 function selectImg(id) {
-  console.log(id)
   setSelectedImg(id)
   window.location.href = 'meme-maker.html'
 }

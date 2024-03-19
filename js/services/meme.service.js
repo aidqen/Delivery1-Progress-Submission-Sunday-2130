@@ -19,16 +19,15 @@ var gMeme = {
 }
 
 function addTextLine() {
-  gMeme.lines.push(newTextLine())
-  if (!gMeme.lines.length === 0) {
+  if (gMeme.lines.length !== 0) {
     gMeme.selectedLineIdx++
   }
+  gMeme.lines.push(newTextLine())
   saveToStorage('selectedMemeDB', gMeme)
   renderMeme()
 }
 
 function newTextLine(txt = 'Some random text') {
-  gMeme.selectedLineIdx++
   return {
     x: 20,
     y: 200,
@@ -76,10 +75,12 @@ function pickAnotherLine() {
 }
 
 function createMemes() {
-  for (var i = 1; i < 18; i++) {
+  for (var i = 1; i <= 18; i++) {
     gMemes.push(createMeme(i))
   }
-  saveToStorage('memesDB', gMemes)
+  addKeywords()
+  saveToStorage('picturesDB', gMemes)
+  console.log(loadFromStorage('picturesDB'));
 }
 
 function getMemes() {

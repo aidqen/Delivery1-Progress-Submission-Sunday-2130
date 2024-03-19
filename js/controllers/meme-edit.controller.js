@@ -10,24 +10,29 @@ var offsetX, offsetY
 function onInitEditor() {
   gElCanvas = document.querySelector('canvas')
   gCtx = gElCanvas.getContext('2d')
-  addListeners()
   renderMeme()
+  gElCanvas.addEventListener('mousedown', onDown)
+  gElCanvas.addEventListener('touchstart', onDown)
 }
 
 function addListeners() {
-  gElCanvas.addEventListener('mousedown', onDown)
   gElCanvas.addEventListener('mousemove', onMove)
   gElCanvas.addEventListener('mouseup', onUp)
-  gElCanvas.addEventListener('touchstart', onDown)
   gElCanvas.addEventListener('touchmove', onMove)
   gElCanvas.addEventListener('touchend', onUp)
 }
 
+function removeListeners() {
+  gElCanvas.removeEventListener('mousemove', onMove)
+  gElCanvas.removeEventListener('touchmove', onMove)
+}
+
 function onDown(ev) {
+  addListeners()
   const currLine = getCurrMeme().lines[gMeme.selectedLineIdx]
   const mouseX = ev.clientX - gElCanvas.getBoundingClientRect().left
   const mouseY = ev.clientY - gElCanvas.getBoundingClientRect().top
-  
+
   if (isWithinLineRange(mouseX, mouseY, gCtx)) {
     offsetX = mouseX - currLine.x
     offsetY = mouseY - currLine.y
@@ -38,10 +43,10 @@ function onDown(ev) {
 function onMove(ev) {
   const meme = getCurrMeme()
   const idx = meme.selectedLineIdx
-  if (meme.lines[idx].isDrag) {
+  if (gMeme.lines[gMeme.selectedLineIdx].isDrag) {
     const mouseX = ev.clientX - gElCanvas.getBoundingClientRect().left
     const mouseY = ev.clientY - gElCanvas.getBoundingClientRect().top
-
+    
     meme.lines[idx].x = mouseX - offsetX
     meme.lines[idx].y = mouseY - offsetY
     clearCanvas()
@@ -53,9 +58,10 @@ function onMove(ev) {
 function onUp() {
   const meme = getCurrMeme()
   const idx = meme.selectedLineIdx
-  console.log('gMeme', gMeme.lines[gMeme.selectedLineIdx].isDrag)
   meme.lines[idx].isDrag = false
   saveToStorage('selectedMemeDB', gMeme)
+  removeListeners()
+  document.body.style.cursor = 'auto'
 }
 
 function resizeCanvas() {
@@ -65,16 +71,16 @@ function resizeCanvas() {
 }
 
 function renderMeme() {
-  clearCanvas()
   gMeme = loadFromStorage('selectedMemeDB')
-  renderImage()
+  renderImage(false)
 }
 
 function clearCanvas() {
   gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
 }
 
-function renderImage() {
+function renderImage(isDownload) {
+  clearCanvas()
   const { selectedImgId } = gMeme
   const img = new Image()
   img.src = `meme-img/${selectedImgId}.jpg`
@@ -158,7 +164,7 @@ function onFontStyleChange(elBtn) {
   }
 }
 
-function downloadImg(elLink) {
+function onDownloadImg(elLink) {
   const imgContent = gElCanvas.toDataURL('image/png') // image/jpeg the default format
   elLink.href = imgContent
 }

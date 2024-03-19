@@ -18,7 +18,7 @@
         <ul class="list-style-none flex flex-column align-items-center">
           <li><a href="index.html">Gallery</a></li>
           <li><a href="#">Random</a></li>
-          <li><a href="#">About</a></li>
+          <li><a href="#">Saved Memes</a></li>
         </ul>
       </nav>
     </header>
@@ -54,7 +54,10 @@
           <button onclick="onFontStyleChange(this)" value="bold">B</button>
           <button onclick="onFontStyleChange(this)" value="italic">&#8520;</button>
         </div>
-        <div class="download-btn flex flex-center"><a href="#"  onclick="downloadImg(this)" download="my-img.png">Download jpeg</a></div>
+        <div class="flex flex-row">
+          <div class="download-btn flex flex-center"><a href="#" onclick="onDownloadImg(this)" download="my-img.png">Download jpeg</a></div>
+          <button class="save-meme" onclick="saveMeme()">Save</button>
+        </div>
       </div>
     </main>
 
