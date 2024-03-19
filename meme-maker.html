@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/helpers/helpers.css" />
     <link rel="stylesheet" href="css/helpers/variables.css">
     <link rel="stylesheet" href="css/mq/mq-header.css">
-    <link rel="stylesheet" href="css/mq/mq.meme-edit.css">
+    <link rel="stylesheet" href="css/mq/mq-meme-maker.css">
 
   </head>
   <body onload="onInitEditor()">
@@ -27,10 +27,11 @@
       </nav>
     </header>
 
-    <main class="flex flex-column align-items-center">
+    <main class="flex align-items-center">
       <div class="canvas-container">
         <canvas height="334px" width="334px"></canvas>
       </div>
+
       <div class="text-edit-container flex flex-column align-items-center">
         <div class="flex flex-row height-3em width-100 justify-content-center">
           <input type="text" class="text-input" placeholder="Text..." onkeyup="onChangeText(this)" />
@@ -62,7 +63,7 @@
           </div>
         </div>
           
-          <div class="flex flex-row height-3em width-100 justify-content-center">
+          <div class="save-container flex flex-row height-3em width-100 justify-content-center">
             <div class="download-btn flex flex-center"><a href="#" onclick="onDownloadImg(this)" download="my-img.png">Download jpeg</a>
             </div>
             <button class="save-meme-btn" onclick="saveMeme()">Save</button>

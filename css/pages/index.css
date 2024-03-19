@@ -4,8 +4,10 @@ body {
 }
 
 main {
+    position: relative;
     display: grid;
     height: 100%;
+    min-width: 26.25em;
     margin: 6em 1em 1em 1em;
     grid-template-columns: repeat(2, 1fr) ;
     background-color: var(--dark-container);
@@ -52,7 +54,6 @@ input.search-input {
     justify-content: space-around;
     color: white;
     background-color: var(--dark-container);
-    border-radius: 30px;
     margin-inline-end: 1em;
     width: 100%;
 }
@@ -71,7 +72,6 @@ input.search-input {
 .common-search>*:hover {
     color: rgb(220,149,172);
     transform: scale(1.1);
-    font-size: bold;
     
     text-decoration: underline;
 }
@@ -89,6 +89,7 @@ input.search-input {
 .more-btn:hover {
     background: #ff96ad;
     box-shadow: 0 0 5px #ff96ad, 0 0 25px #ff96ad, 0 0 50px #ff96ad, 0 0 200px #ff96ad;
+    font-weight: 700;
     color: black;
 }
 
@@ -97,6 +98,8 @@ section.photos {
     gap: 1em;
     width: 100%;
     height: 100%;
+
+    margin-top: 2.5em;
 }
 
 section.photos > * {
@@ -115,4 +118,22 @@ section.photos > * {
 
 .full {
     grid-column: span 2;
+}
+
+.random-picture {
+    position: absolute;
+    right: 1em;
+    /* border-radius: 1em; */
+    padding: 0.5em 1em;
+    color: white;
+    border: 0;
+    /* background-color: var(--dark-container); */
+    font-weight: 900;
+    transition: 0.2s;
+}
+
+.random-picture:hover {
+    scale: 1.1;
+    text-shadow: 0 0 5px #ff96ad, 0 0 25px #ff96ad, 0 0 50px #ff96ad, 0 0 200px #ff96ad;
+    /* color: black; */
 }
