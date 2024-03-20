@@ -34,3 +34,20 @@
 .width-100 {
     width: 100%;
 }
+
+.active {
+    background-color: lightgreen;
+    font-weight: 900;
+}
+
+.reorder-btn {
+    background-color: rgb(51, 202, 252)
+}
+
+.add-btn {
+    background-color: rgb(42, 232, 42);
+}
+
+.remove-btn {
+    background-color: red;
+}

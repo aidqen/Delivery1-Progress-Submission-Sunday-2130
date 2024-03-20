@@ -72,14 +72,20 @@ function resizeCanvas() {
 
 function renderMeme() {
   gMeme = loadFromStorage('selectedMemeDB')
-  renderImage(false)
+  renderImage()
+  renderInput()
+}
+
+function renderInput() {
+  const meme = getCurrMeme()
+  document.querySelector('input.text-input').value = meme.lines[meme.selectedLineIdx].txt
 }
 
 function clearCanvas() {
   gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
 }
 
-function renderImage(isDownload) {
+function renderImage() {
   clearCanvas()
   const { selectedImgId } = gMeme
   const img = new Image()
@@ -122,6 +128,7 @@ function renderText() {
         textWidth + 2 * padding,
         size + 2 * padding
       )
+      renderInput()
     }
   })
 }
@@ -169,3 +176,5 @@ function onDownloadImg(elLink) {
   elLink.href = imgContent
 }
 
+function onSaveMeme() {
+}

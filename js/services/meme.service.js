@@ -6,12 +6,12 @@ var gMeme = {
   selectedLineIdx: 0,
   lines: [
     {
-      x: 20,
-      y: 200,
+      x: 50,
+      y: 300,
       txt: 'some random text',
       size: 30,
       color: 'white',
-      font: 'sans-serif',
+      font: 'Impact',
       fontStyle: ['normal'],
       isDrag: false
     },
