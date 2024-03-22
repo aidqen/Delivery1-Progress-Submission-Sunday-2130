@@ -2,7 +2,7 @@
 var gId = 1
 const gMemes = []
 var gMeme = {
-  selectedImgId: 0,
+  selectedImgId: 3,
   selectedLineIdx: 0,
   lines: [
     {
@@ -18,61 +18,8 @@ var gMeme = {
   ],
 }
 
-function addTextLine() {
-  if (gMeme.lines.length !== 0) {
-    gMeme.selectedLineIdx++
-  }
-  gMeme.lines.push(newTextLine())
-  saveToStorage('selectedMemeDB', gMeme)
-  renderMeme()
-}
 
-function newTextLine(txt = 'Some random text') {
-  return {
-    x: 20,
-    y: 200,
-    txt,
-    size: 24,
-    color: 'white',
-    font: 'Impact',
-    fontStyle: ['normal'],
-    isDrag: false,
-  }
-}
 
-function isWithinLineRange(mouseX, mouseY, ctx) { 
-  const idx = gMeme.selectedLineIdx
-  if (
-    mouseX >= gMeme.lines[idx].x &&
-    mouseX <= gMeme.lines[idx].x + ctx.measureText(gMeme.lines[idx].txt).width &&
-    mouseY >= gMeme.lines[idx].y - gMeme.lines[idx].size &&
-    mouseY <= gMeme.lines[idx].y
-  ) {
-    gMeme.lines[idx].isDrag = true
-    console.log(gMeme.lines[idx].isDrag);
-    return true
-  }
-}
-
-function removeTextLine() {
-  var idx = gMeme.selectedLineIdx
-  gMeme.lines.splice(idx, 1)
-  if (idx !== 0) {
-    gMeme.selectedLineIdx--
-  }
-  saveToStorage('selectedMemeDB', gMeme)
-  renderMeme()
-}
-
-function pickAnotherLine() {
-  gMeme.selectedLineIdx++
-  if (gMeme.lines.length <= gMeme.selectedLineIdx) {
-    gMeme.selectedLineIdx = 0
-  }
-  console.log(gMeme)
-  saveToStorage('selectedMemeDB', gMeme)
-  renderMeme()
-}
 
 function createMemes() {
   for (var i = 1; i <= 18; i++) {
@@ -95,29 +42,26 @@ function createMeme(id) {
   }
 }
 
-function getCurrMeme() {
-  return gMeme
-}
 
 function addKeywords() {
   gMemes[0].keywords.push('men', 'funny')
-  gMemes[1].keywords.push('animal', 'smile')
-  gMemes[2].keywords.push('animal', 'funny', 'smile')
+  gMemes[1].keywords.push('animal', 'cute')
+  gMemes[2].keywords.push('animal', 'cute')
   gMemes[3].keywords.push('animal')
-  gMemes[4].keywords.push('men', 'funny')
-  gMemes[5].keywords.push('men', 'funny')
-  gMemes[6].keywords.push('men', 'funny')
-  gMemes[7].keywords.push('men', 'funny')
-  gMemes[8].keywords.push('men', 'funny')
-  gMemes[9].keywords.push('men', 'funny')
+  gMemes[4].keywords.push('men', 'funny', 'cute')
+  gMemes[5].keywords.push('men', 'funny', 'smile')
+  gMemes[6].keywords.push('men', 'cute')
+  gMemes[7].keywords.push('men', 'smile')
+  gMemes[8].keywords.push('men', 'funny', 'cute')
+  gMemes[9].keywords.push('men', 'funny', 'smile')
   gMemes[10].keywords.push('men', 'funny')
-  gMemes[11].keywords.push('men', 'funny')
-  gMemes[12].keywords.push('men', 'funny')
-  gMemes[13].keywords.push('men', 'funny')
-  gMemes[14].keywords.push('men', 'funny')
+  gMemes[11].keywords.push('men')
+  gMemes[12].keywords.push('men', 'smile')
+  gMemes[13].keywords.push('men')
+  gMemes[14].keywords.push('men')
   gMemes[15].keywords.push('men', 'funny')
   gMemes[16].keywords.push('men', 'funny')
-  gMemes[17].keywords.push('men', 'funny')
+  gMemes[17].keywords.push('men', 'cute', 'smile', 'funny')
 }
 
 function setSelectedImg(id) {
@@ -125,11 +69,9 @@ function setSelectedImg(id) {
   saveToStorage('selectedMemeDB', gMeme)
 }
 
-function setCircleDrag(isDrag) {
-  gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
-}
-
 function pickRandomPicture() {
   gMeme.selectedImgId = getRandomInt(0, gMemes.length)
   saveToStorage('selectedMemeDB', gMeme)
 }
+
+

@@ -59,3 +59,59 @@ function fontStyleRemove(style) {
   saveToStorage('selectedMemeDB', gMeme)
   renderMeme()
 }
+
+function addTextLine() {
+  if (gMeme.lines.length !== 0) {
+    gMeme.selectedLineIdx++
+  }
+  gMeme.lines.push(newTextLine())
+  saveToStorage('selectedMemeDB', gMeme)
+  renderMeme()
+}
+
+function newTextLine(txt = 'Some random text') {
+  return {
+    x: 20,
+    y: 200,
+    txt,
+    size: 24,
+    color: 'white',
+    font: 'Impact',
+    fontStyle: ['normal'],
+    isDrag: false,
+  }
+}
+
+function removeTextLine() {
+  var idx = gMeme.selectedLineIdx
+  gMeme.lines.splice(idx, 1)
+  if (idx !== 0) {
+    gMeme.selectedLineIdx--
+  }
+  saveToStorage('selectedMemeDB', gMeme)
+  renderMeme()
+}
+
+function pickAnotherLine() {
+  gMeme.selectedLineIdx++
+  if (gMeme.lines.length <= gMeme.selectedLineIdx) {
+    gMeme.selectedLineIdx = 0
+  }
+  console.log(gMeme)
+  saveToStorage('selectedMemeDB', gMeme)
+  renderMeme()
+}
+
+function isWithinLineRange(mouseX, mouseY, ctx) { 
+  const idx = gMeme.selectedLineIdx
+  if (
+    mouseX >= gMeme.lines[idx].x &&
+    mouseX <= gMeme.lines[idx].x + ctx.measureText(gMeme.lines[idx].txt).width &&
+    mouseY >= gMeme.lines[idx].y - gMeme.lines[idx].size &&
+    mouseY <= gMeme.lines[idx].y
+  ) {
+    gMeme.lines[idx].isDrag = true
+    console.log(gMeme.lines[idx].isDrag);
+    return true
+  }
+}
