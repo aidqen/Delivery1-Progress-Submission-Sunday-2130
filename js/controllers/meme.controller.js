@@ -30,7 +30,7 @@ function selectImg(id) {
 
 function onRandomPicture() {
   pickRandomPicture()
-  window.location.href = 'meme-maker.html'
+  window.location.href = 'meme-edit.html'
 }
 
 function filterPictures(value) {
