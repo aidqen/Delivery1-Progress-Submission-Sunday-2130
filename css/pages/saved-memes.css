@@ -1,0 +1,28 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--dark-body);
+}
+
+main {
+    flex-direction: column;
+    margin: 6em 1em 1em 1em;
+    min-width: 24.25em;
+    padding: 1em;
+    height: max-content;
+    border-radius: 1em;
+    background-color: var(--dark-container);
+}
+
+canvas {
+    background-color: white;
+    margin: 1em;
+    border-radius: 1em;
+}
