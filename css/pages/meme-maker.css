@@ -14,7 +14,7 @@ body {
 main {
     flex-direction: column;
     margin: 6em 1em 1em 1em;
-    min-width: 25.25em;
+    min-width: 24.25em;
     padding: 1em;
     height: max-content;
     border-radius: 1em;
@@ -130,7 +130,12 @@ main .save-container {
     color: white;
     border-radius: 1em;
     margin-inline-start: 1em;
+    font-weight: 700;
     transition: 0.2s;
+}
+
+.text-edit-container .save-meme-btn:active {
+    color: lightgreen;
 }
 
 .save-meme-btn:hover,

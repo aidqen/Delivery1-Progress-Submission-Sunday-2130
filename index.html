@@ -20,7 +20,7 @@
         <ul class="list-style-none flex  ">
           <li><a href="index.html">Gallery</a></li>
           <li><a href="#">Random</a></li>
-          <li><a href="#">Saved Memes</a></li>
+          <li><a href="saved-memes.html">Saved Memes</a></li>
         </ul>
       </nav>
     </header>
@@ -35,12 +35,13 @@
 
         <div class="common-search-container flex flex-row flex-center full">
           <section class="common-search flex flex-row">
-            <div class="search-funny">Funny</div>
-            <div class="search-animal">Animal</div>
-            <div class="search-men">Men</div>
-            <div class="search-women">Women</div>
-            <div class="search-comic">comic</div>
-            <div class="search-smile">smile</div>
+            <div class="search-All" onclick="filterPictures(this.innerText)">All</div>
+            <div class="search-funny" onclick="filterPictures(this.innerText)">Funny</div>
+            <div class="search-animal" onclick="filterPictures(this.innerText)">Animal</div>
+            <div class="search-men" onclick="filterPictures(this.innerText)">Men</div>
+            <div class="search-women" onclick="filterPictures(this.innerText)">Women</div>
+            <div class="search-comic" onclick="filterPictures(this.innerText)">Cute</div>
+            <div class="search-smile" onclick="filterPictures(this.innerText)">Smile</div>
           </section>
 
           <button class="more-btn">More</button>

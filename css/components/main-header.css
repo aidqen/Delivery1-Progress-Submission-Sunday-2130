@@ -1,6 +1,6 @@
 header {
     position: fixed;
-    width: 100vw;
+    width: 100%;
     top: 0;
     z-index: 50;
     justify-content: space-between;
@@ -58,6 +58,24 @@ li a:active:before,
 li a:active:after {
     width: 100%;
 }
+
+/* header li::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    left: -35%;
+    top: 0;
+    transform: skew(50deg);
+    transition-duration: 0.6s;
+    transform-origin: top left;
+    background-color: #fff;
+    width: 0;
+}
+
+header li::after:hover {
+    height: 100%;
+    width: 135%;
+} */
 
 
 /* The navigation menu links */

@@ -9,3 +9,12 @@ function loadFromStorage(key) {
     const valStr = localStorage.getItem(key)
     return JSON.parse(valStr)
 }
+
+function renderStorage(variable) {
+    if (variable === 'gMeme') {
+      gMeme = loadFromStorage('selectedMemeDB')
+    } else if (variable === 'gSavedMemes') {
+      gSavedMemes = loadFromStorage('savedMemesDB')
+      console.log(loadFromStorage('savedMemesDB'))
+    }
+  }  

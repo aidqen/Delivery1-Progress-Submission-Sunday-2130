@@ -22,7 +22,7 @@
         <ul class="list-style-none flex flex-column align-items-center">
           <li><a href="index.html">Gallery</a></li>
           <li><a href="#">Random</a></li>
-          <li><a href="#">Saved Memes</a></li>
+          <li><a href="saved-memes.html">Saved Memes</a></li>
         </ul>
       </nav>
     </header>
@@ -63,10 +63,10 @@
           </div>
         </div>
           
-          <div class="save-container flex flex-row height-3em width-100 justify-content-center">
-            <div class="download-btn flex flex-center"><a href="#" onclick="onDownloadImg(this)" download="my-img.png">Download jpeg</a>
+          <div class="save-container flex flex-center height-3em width-100">
+            <div class="download-btn"><a href="#" class="flex flex-center" onclick="onDownloadImg(this)" download="my-img.png">Download jpeg</a>
             </div>
-            <button class="save-meme-btn" onclick="saveMeme()">Save</button>
+            <div class="save-meme-btn flex flex-center" onclick="onSaveMeme()">Save</div>
         </div>
       </div>
     </main>
@@ -74,7 +74,8 @@
     <script src="js/controllers/meme-edit.controller.js"></script>
     <script src="js/controllers/meme.controller.js"></script>
     <script src="js/services/meme.service.js"></script>
-    <script src="js/services/user-preferences.service.js"></script>
+    <script src="js/services/meme-edit.service.js"></script>
+    <script src="js/services/saved-memes.service.js"></script>
     <script src="js/services/storage.service.js"></script>
   </body>
 </html>

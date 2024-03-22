@@ -11,6 +11,7 @@ function onInitEditor() {
   gElCanvas = document.querySelector('canvas')
   gCtx = gElCanvas.getContext('2d')
   renderMeme()
+  // renderStorage('gSavedMemes')
   gElCanvas.addEventListener('mousedown', onDown)
   gElCanvas.addEventListener('touchstart', onDown)
 }
@@ -27,51 +28,14 @@ function removeListeners() {
   gElCanvas.removeEventListener('touchmove', onMove)
 }
 
-function onDown(ev) {
-  addListeners()
-  const currLine = getCurrMeme().lines[gMeme.selectedLineIdx]
-  const mouseX = ev.clientX - gElCanvas.getBoundingClientRect().left
-  const mouseY = ev.clientY - gElCanvas.getBoundingClientRect().top
-
-  if (isWithinLineRange(mouseX, mouseY, gCtx)) {
-    offsetX = mouseX - currLine.x
-    offsetY = mouseY - currLine.y
-  }
-  document.body.style.cursor = 'grabbing'
-}
-
-function onMove(ev) {
-  const meme = getCurrMeme()
-  const idx = meme.selectedLineIdx
-  if (gMeme.lines[gMeme.selectedLineIdx].isDrag) {
-    const mouseX = ev.clientX - gElCanvas.getBoundingClientRect().left
-    const mouseY = ev.clientY - gElCanvas.getBoundingClientRect().top
-    
-    meme.lines[idx].x = mouseX - offsetX
-    meme.lines[idx].y = mouseY - offsetY
-    clearCanvas()
-    renderImage()
-    renderText()
-  }
-}
-
-function onUp() {
-  const meme = getCurrMeme()
-  const idx = meme.selectedLineIdx
-  meme.lines[idx].isDrag = false
-  saveToStorage('selectedMemeDB', gMeme)
-  removeListeners()
-  document.body.style.cursor = 'auto'
-}
-
 function resizeCanvas() {
   const elContainer = document.querySelector('.canvas-container')
-
+  
   gElCanvas.width = elContainer.clientWidth
 }
 
 function renderMeme() {
-  gMeme = loadFromStorage('selectedMemeDB')
+  renderStorage('gMeme')
   renderImage()
   renderInput()
 }
@@ -87,61 +51,100 @@ function clearCanvas() {
 
 function renderImage() {
   clearCanvas()
-  const { selectedImgId } = gMeme
+  const meme = getCurrMeme()
+  const { selectedImgId } = meme
   const img = new Image()
   img.src = `meme-img/${selectedImgId}.jpg`
   img.onload = () => {
     const scaleFactor = Math.min(
       gElCanvas.width / img.width,
       gElCanvas.height / img.height
-    )
-    const scaledWidth = img.width * scaleFactor
-    const scaledHeight = img.height * scaleFactor
-    gCtx.drawImage(img, 0, 0, scaledWidth, scaledHeight)
-    renderText()
-  }
-}
-
-function renderText() {
-  const meme = getLineText()
-  meme.lines.map((line, idx) => {
-    const { x, y, txt, size, color, font, fontStyle } = line
-    gCtx.fillStyle = color
-    gCtx.strokeStyle = 'black'
-    gCtx.lineWidth = 1
-
-    gCtx.font = `${fontStyle.join(' ')} ${size}px ${font}`
-    gCtx.fontSmoothingEnabled = true
-    gCtx.textAlign = 'start'
-
-    gCtx.fillText(txt, x, y)
-    gCtx.strokeText(txt, x, y)
-
-    if (idx === meme.selectedLineIdx) {
-      const textWidth = gCtx.measureText(txt).width
-      const padding = 5
-      gCtx.strokeStyle = 'black'
-      gCtx.lineWidth = 2
-      gCtx.strokeRect(
-        x - padding,
-        y - size + padding,
-        textWidth + 2 * padding,
-        size + 2 * padding
       )
-      renderInput()
+      const scaledWidth = img.width * scaleFactor
+      const scaledHeight = img.height * scaleFactor
+      gCtx.drawImage(img, 0, 0, scaledWidth, scaledHeight)
+      renderText()
     }
-  })
-}
+  }
+  
+  function renderText() {
+    const meme = getLineText()
+    meme.lines.map((line, idx) => {
+      const { x, y, txt, size, color, font, fontStyle } = line
+      gCtx.fillStyle = color
+      gCtx.strokeStyle = 'black'
+      gCtx.lineWidth = 1
+      
+      gCtx.font = `${fontStyle.join(' ')} ${size}px ${font}`
+      gCtx.fontSmoothingEnabled = true
+      gCtx.textAlign = 'start'
+      
+      gCtx.fillText(txt, x, y)
+      gCtx.strokeText(txt, x, y)
+      
+      if (idx === meme.selectedLineIdx) {
+        const textWidth = gCtx.measureText(txt).width
+        const padding = 5
+        gCtx.strokeStyle = 'black'
+        gCtx.lineWidth = 2
+        gCtx.strokeRect(
+          x - padding,
+          y - size + padding,
+          textWidth + 2 * padding,
+          size + 2 * padding
+          )
+          renderInput()
+        }
+      })
+    }
+    
+    
+    function onDown(ev) {
+      addListeners()
+      const currLine = getCurrMeme().lines[gMeme.selectedLineIdx]
+      const mouseX = ev.clientX - gElCanvas.getBoundingClientRect().left
+      const mouseY = ev.clientY - gElCanvas.getBoundingClientRect().top
+    
+      if (isWithinLineRange(mouseX, mouseY, gCtx)) {
+        offsetX = mouseX - currLine.x
+        offsetY = mouseY - currLine.y
+      }
+      document.body.style.cursor = 'grabbing'
+    }
+    
+    function onMove(ev) {
+      const meme = getCurrMeme()
+      const idx = meme.selectedLineIdx
+      if (gMeme.lines[gMeme.selectedLineIdx].isDrag) {
+        const mouseX = ev.clientX - gElCanvas.getBoundingClientRect().left
+        const mouseY = ev.clientY - gElCanvas.getBoundingClientRect().top
+        
+        meme.lines[idx].x = mouseX - offsetX
+        meme.lines[idx].y = mouseY - offsetY
+        clearCanvas()
+        renderImage()
+        renderText()
+      }
+    }
+    
+    function onUp() {
+      const meme = getCurrMeme()
+      const idx = meme.selectedLineIdx
+      meme.lines[idx].isDrag = false
+      saveToStorage('selectedMemeDB', gMeme)
+      removeListeners()
+      document.body.style.cursor = 'auto'
+    }
 
-function onAddTextLine() {
-  addTextLine()
-}
-
-function onRemoveTextLine() {
-  removeTextLine()
-}
-
-function onPickAnotherLine() {
+    function onAddTextLine() {
+      addTextLine()
+    }
+    
+    function onRemoveTextLine() {
+      removeTextLine()
+    }
+    
+    function onPickAnotherLine() {
   pickAnotherLine()
 }
 
@@ -177,4 +180,5 @@ function onDownloadImg(elLink) {
 }
 
 function onSaveMeme() {
+  saveMeme()
 }
