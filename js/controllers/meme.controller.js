@@ -1,5 +1,7 @@
 'use strict'
 
+var gFilterParam
+
 function onInit() {
   createMemes()
   renderImages()
@@ -13,7 +15,7 @@ function toggleMenu() {
 function renderImages() {
   const elContainer = document.querySelector('section.photos')
 
-  var memes = getMemes()
+  var memes = getMemes(gFilterParam)
   var strHTML = ''
   memes.map(meme => {
     strHTML += `<img src="meme-img/${meme.id}.jpg" class="meme-img" onclick="selectImg(${meme.id})"></img>`
@@ -29,4 +31,9 @@ function selectImg(id) {
 function onRandomPicture() {
   pickRandomPicture()
   window.location.href = 'meme-maker.html'
+}
+
+function filterPictures(value) {
+  gFilterParam = value.toLowerCase()
+  renderImages()
 }

@@ -30,8 +30,16 @@ function createMemes() {
   console.log(loadFromStorage('picturesDB'));
 }
 
-function getMemes() {
+function getMemes(filterParam) {
+  console.log(filterParam);
+  if (filterParam && !(filterParam === 'all')) {
+    return gMemes.filter(meme => meme.keywords.includes(filterParam))
+  }
   return gMemes
+}
+
+function getCurrMeme() {
+  return gMeme
 }
 
 function createMeme(id) {
