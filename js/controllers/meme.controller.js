@@ -25,10 +25,10 @@ function renderImages() {
 
 function selectImg(id) {
   setSelectedImg(id)
-  window.location.href = 'meme-maker.html'
+  window.location.href = 'meme-edit.html'
 }
 
-function onRandomPicture() {
+function onRandomPicture(ev) {
   pickRandomPicture()
   window.location.href = 'meme-edit.html'
 }

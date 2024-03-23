@@ -15,6 +15,5 @@ function renderStorage(variable) {
       gMeme = loadFromStorage('selectedMemeDB')
     } else if (variable === 'gSavedMemes') {
       gSavedMemes = loadFromStorage('savedMemesDB')
-      console.log(loadFromStorage('savedMemesDB'))
     }
   }  

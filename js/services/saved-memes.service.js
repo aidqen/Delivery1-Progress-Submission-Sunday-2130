@@ -24,8 +24,6 @@ function getSavedMemes() {
 }
 
 function saveMeme() {
-  console.log(gMeme)
-  console.log(gSavedMemes)
   gSavedMemes.push(gMeme)
   saveToStorage('savedMemesDB', gSavedMemes)
 }
