@@ -32,12 +32,19 @@ input.text-input {
     border-radius: 30px;
     border: 0;
     background: var(--header-gradient);
+    color: white;
 }
+
 
 input.color-input {
     border-radius: 1em;
     background-color: var(--dark-container);
     border: 1px solid black;
+    transition: 0.2s;
+}
+
+input.color-input:hover {
+    background-color: var(--main-pink);
 }
 
 input.text-input {
@@ -68,7 +75,7 @@ button {
     transition: 0.2s;
 }
 
-button:hover, select:hover {
+button:not(.upload-facebook):hover, select:hover {
     background-color: rgb(239, 134, 143);
     cursor: pointer;
 }
@@ -84,8 +91,9 @@ select {
     transition: 0.2s;
 }
 
-.text-edit-container div {
+.text-edit-container > * {
     margin-bottom: 1em;
+    width: 100%;
 }
 
 .text-edit-container .download-btn {
@@ -119,7 +127,9 @@ main .save-container {
     background: var(--header-gradient);
     padding: 1em;
     border-radius: 1em;
+    transition: 0.2s;
 }
+
 
 .font-edit-container> :last-child {
     margin-bottom: 0;
@@ -134,13 +144,20 @@ main .save-container {
     transition: 0.2s;
 }
 
-.text-edit-container .save-meme-btn:active {
-    color: lightgreen;
+.save-meme-btn, .download-btn, .upload-facebook {
+    font-size: 1em;
+} 
+
+
+.upload-facebook {
+    border: 1px solid black;
+    font-weight: 700;
+    padding-block: 1.5em;
 }
 
 .save-meme-btn:hover,
-.download-btn:hover {
-    box-shadow: 10px 10px 0px #ff96ad;
+.download-btn:hover, .upload-facebook:hover {
+    box-shadow: 10px 10px 0px var(--main-pink);
     top: -5px;
     left: -5px;
     cursor: pointer;

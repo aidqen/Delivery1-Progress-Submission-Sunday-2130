@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/helpers/helpers.css" />
     <link rel="stylesheet" href="css/helpers/variables.css">
     <link rel="stylesheet" href="css/mq/mq-header.css">
-    <link rel="stylesheet" href="css/mq/mq-meme-maker.css">
+    <link rel="stylesheet" href="css/mq/mq-meme-edit.css">
 
   </head>
   <body onload="onInitEditor()">
@@ -21,7 +21,7 @@
       <nav class="sidenav">
         <ul class="list-style-none flex flex-column align-items-center">
           <li><a href="index.html">Gallery</a></li>
-          <li><a href="#">Random</a></li>
+          <li><a href="" onclick="renderRandomMeme()">Random</a></li>
           <li><a href="saved-memes.html">Saved Memes</a></li>
         </ul>
       </nav>
@@ -62,7 +62,7 @@
             <button onclick="onFontStyleChange(this)" value="italic">&#8520;</button>
           </div>
         </div>
-          
+        <button class="upload-facebook flex flex-center" onclick="onUploadImg()">Upload on Facebook</button>
           <div class="save-container flex flex-center height-3em width-100">
             <div class="download-btn"><a href="#" class="flex flex-center" onclick="onDownloadImg(this)" download="my-img.png">Download jpeg</a>
             </div>
@@ -77,5 +77,6 @@
     <script src="js/services/meme-edit.service.js"></script>
     <script src="js/services/saved-memes.service.js"></script>
     <script src="js/services/storage.service.js"></script>
+    <script src="js/util.js"></script>
   </body>
 </html>
