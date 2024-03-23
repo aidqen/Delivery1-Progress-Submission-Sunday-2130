@@ -71,7 +71,7 @@ function addTextLine() {
 
 function newTextLine(txt = 'Some random text') {
   return {
-    x: 20,
+    x: 5,
     y: 200,
     txt,
     size: 24,
@@ -102,16 +102,22 @@ function pickAnotherLine() {
   renderMeme()
 }
 
-function isWithinLineRange(mouseX, mouseY, ctx) { 
+function isWithinLineRange(mouseX, mouseY, ctx) {
   const idx = gMeme.selectedLineIdx
   if (
     mouseX >= gMeme.lines[idx].x &&
-    mouseX <= gMeme.lines[idx].x + ctx.measureText(gMeme.lines[idx].txt).width &&
+    mouseX <=
+      gMeme.lines[idx].x + ctx.measureText(gMeme.lines[idx].txt).width &&
     mouseY >= gMeme.lines[idx].y - gMeme.lines[idx].size &&
     mouseY <= gMeme.lines[idx].y
   ) {
     gMeme.lines[idx].isDrag = true
-    console.log(gMeme.lines[idx].isDrag);
     return true
   }
+}
+
+function measureTextWidth(ctx) {
+  const idx = gMeme.selectedLineIdx
+  ctx.font = `${gMeme.lines[idx].size}px ${gMeme.lines[idx].font}`
+  return ctx.measureText(gMeme.lines[idx].txt).width
 }
