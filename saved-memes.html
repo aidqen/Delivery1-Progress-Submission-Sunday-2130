@@ -14,10 +14,11 @@
     <header class="flex flex-row align-items-center">
         <h2>Superdupermeme Generator!</h2>
         <div onclick="toggleMenu()" class="nav-btn flex flex-center">&#x2630</div>
+        <div class="backdrop" onclick="toggleMenu()"></div>
         <nav class="sidenav flex">
           <ul class="list-style-none flex  ">
             <li><a href="index.html">Gallery</a></li>
-            <li><a href="#">Random</a></li>
+            <li><a href="#" onclick="renderRandomMeme()">Random</a></li>
             <li><a href="saved-memes.html">Saved Memes</a></li>
           </ul>
         </nav>
@@ -27,9 +28,11 @@
           <div class="memes-container"></div>
       </main>
 
+      <script src="js/controllers/meme-edit.controller.js"></script>
       <script src="js/controllers/saved-memes.controller.js"></script>
       <script src="js/services/meme.service.js"></script>
       <script src="js/services/saved-memes.service.js"></script>
       <script src="js/services/storage.service.js"></script>
+      <script src="js/util.js"></script>
 </body>
 </html>

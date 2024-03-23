@@ -24,6 +24,12 @@
         transform: translateX(0);
         box-shadow: -3px 0px 20px 0px black;
     }
+
+    body.menu-open .backdrop {
+        cursor: pointer;
+        visibility: visible;
+        opacity: 0.4;
+    }
 }
 
 @media (min-width: 920px) {
