@@ -13,13 +13,18 @@ var gMeme = {
       color: 'white',
       font: 'Impact',
       fontStyle: ['normal'],
-      isDrag: false
+      isDrag: false,
     },
   ],
 }
 
-
-
+const gMemeLines = [
+  'I\'m not a complete idiot, some parts are missing.',
+  'Keys found, locks changed!',
+  'Lottery\'s a joke, my luck\'s the punchline.',
+  'Bad luck: my own currency.',
+  'I\'m not short, I\'m just concentrated awesome!'
+]
 
 function createMemes() {
   for (var i = 1; i <= 18; i++) {
@@ -27,13 +32,13 @@ function createMemes() {
   }
   addKeywords()
   saveToStorage('picturesDB', gMemes)
-  console.log(loadFromStorage('picturesDB'));
 }
 
 function getMemes(filterParam) {
-  console.log(filterParam);
   if (filterParam && !(filterParam === 'all')) {
-    return gMemes.filter(meme => meme.keywords.includes(filterParam))
+    return gMemes.filter(meme =>
+      meme.keywords.find(keyword => keyword.includes(filterParam))
+    )
   }
   return gMemes
 }
@@ -49,7 +54,6 @@ function createMeme(id) {
     keywords: [],
   }
 }
-
 
 function addKeywords() {
   gMemes[0].keywords.push('men', 'funny')
@@ -82,4 +86,13 @@ function pickRandomPicture() {
   saveToStorage('selectedMemeDB', gMeme)
 }
 
-
+function randomMemePick() {
+  const idx = getRandomInt(0, gMemeLines.length - 1)
+  gMeme.lines[0].txt = gMemeLines[idx]
+  gMeme.lines[0].size = 16
+  gMeme.selectedImgId = getRandomInt(0, 17)
+  saveToStorage('selectedMemeDB', gMeme)
+  if (window.location.href === 'http://127.0.0.1:5501/meme-edit.html') {
+    renderMeme()
+  } else window.location.href = 'meme-edit.html'  
+}
